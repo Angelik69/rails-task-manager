@@ -1,0 +1,11 @@
+<h1><%= @task.title %></h1>
+
+<%= link_to 'Edit this task', edit_task_path %>
+
+<div>
+  <p><%= @task.details %></p>
+</div>
+
+<%= @task.completed ? raw('<i class="fa-regular fa-square-check"></i><p>This task is completed</p>') : raw('<i class="fa-regular fa-square"></i><p>This task is not completed yet</p>') %>
+
+<%= link_to 'Back to list', tasks_path %>
