@@ -1,9 +1,14 @@
 <%= form_with model: task do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title %>
-<%= f.label :details %>
-<%= f.text_area :details %>
-<%= f.check_box :completed unless task.new_record?%>
-<%= f.label :completed unless task.new_record?%>
-<%= f.submit %>
+<%= f.label :title, class: 'form-label fw-bold mt-3' %>
+<%= f.text_field :title, class: 'form-control mb-3' %>
+<%= f.label :details, class: 'form-label fw-bold' %>
+<%= f.text_area :details, class: 'form-control mb-3' %>
+<% if task.persisted? %>
+  <div class='form-check'>
+  <%= f.check_box :completed, class: 'form-check-input' %>
+  <%= f.label :completed, class: 'form-check-label fw-bold' %>
+  </div>
 <% end %>
+<%= f.submit :class => 'btn btn-primary mt-3 mb-3' %>
+<% end %>
+<%= link_to raw('<i class="fa-solid fa-circle-arrow-left"></i> Back to list'), tasks_path %>

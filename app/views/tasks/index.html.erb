@@ -1,11 +1,16 @@
-<h1>My tasks</h1>
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-      <%= task.completed ? raw('<i class="fa-regular fa-square-check"></i>') : raw('<i class="fa-regular fa-square"></i>') %>
-      <%= link_to task.title, task_path(task) %>
-      <%= link_to raw('<i class="fa-regular fa-trash-can"></i>'), task_path(task), data: {turbo_method: :delete, turbo_confirm: "Delete #{task.title}?"} %>
-    </li>
-  <% end %>
-</ul>
-<%= link_to 'Add a new task', new_task_path %>
+<div class="container">
+
+  <h1>My tasks</h1>
+  <ul class="list-group list-group-flush mb-3">
+    <% @tasks.each do |task| %>
+      <li class="list-group-item">
+        <%= task.completed ? raw('<i class="fa-regular fa-square-check"></i>') : raw('<i class="fa-regular fa-square"></i>') %>
+        <%= link_to task.title, task_path(task) %>
+        <span>.</span>
+        <%= link_to raw('<i class="fa-regular fa-trash-can"></i>'), task_path(task), data: {turbo_method: :delete, turbo_confirm: "Delete #{task.title}?"} %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to raw('<i class="fa-solid fa-circle-plus"></i> Add a new task'), new_task_path %>
+</div>
